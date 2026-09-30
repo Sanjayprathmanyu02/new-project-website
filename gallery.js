@@ -1,11 +1,11 @@
 /**
  * ============================================================
- * AgriSpike — Photo Gallery Logic
+ * SkySync — Photo Gallery Logic
  * ============================================================
  */
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof CONFIG === 'undefined' || !CONFIG.GALLERY_IMAGES) {
-    console.error('[AgriSpike] GALLERY_IMAGES not found in config.js');
+    console.error('[SkySync] GALLERY_IMAGES not found in config.js');
     return;
   }
 

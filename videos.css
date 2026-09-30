@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AgriSpike - Videos Grid & Native Modal Styles
+   SkySync - Videos Grid & Native Modal Styles
    ========================================================================== */
 
 /* ── Back Link (Shared with gallery, redeclared here for safety) ── */
@@ -23,9 +23,7 @@
   gap: 32px;
   margin-bottom: 60px;
 }
-@media (min-width: 1200px) {
-  .videos-grid { grid-template-columns: repeat(3, 1fr); }
-}
+
 @media (max-width: 768px) {
   .videos-grid { grid-template-columns: 1fr; gap: 24px; }
 }

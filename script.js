@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  AgriSpike — Evidence & Documentation Hub
+ *  SkySync — From Block Forecasts to Panchayat Truth
  *  script.js  ·  All dynamic behaviour
  * ============================================================
  *  Reads CONFIG from config.js (loaded first in index.html).
@@ -9,7 +9,6 @@
  *    - Photo gallery
  *    - Video player
  *    - Testimonials
- *    - Technical documents
  *    - CTA mockup
  *    - Team grid
  *    - Footer strings
@@ -22,7 +21,7 @@
    GUARD: ensure CONFIG exists
 ──────────────────────────────────────────────────────────── */
 if (typeof CONFIG === 'undefined') {
-  console.error('[AgriSpike] config.js not loaded. Check script order in index.html.');
+  console.error('[SkySync] config.js not loaded. Check script order in index.html.');
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -49,8 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initGallery();
   initVideo();
-  initTestimonials();
-  initDocuments();
+
   initCTABanner();
   initTeam();
   initFooter();
@@ -153,11 +151,9 @@ function initNavbar() {
     const map = {
       'nav-home':  nav.home,
       'nav-field': nav.fieldValidation,
-      'nav-docs':  nav.techDocs,
       'nav-team':  nav.team,
       'mnav-home':  nav.home,
       'mnav-field': nav.fieldValidation,
-      'mnav-docs':  nav.techDocs,
       'mnav-team':  nav.team,
     };
     Object.entries(map).forEach(([id, href]) => {
@@ -197,9 +193,9 @@ function initGallery() {
   ];
 
   const altTexts = [
-    'IoT device mounted in agricultural field',
-    'Farmers and researchers discussing AgriSpike system',
-    'Vast green agricultural field landscape',
+    'Ground node mounted in village',
+    'Local officials and researchers discussing SkySync system',
+    'Panchayat village landscape',
     'More field photos',
   ];
 
@@ -370,140 +366,7 @@ function initVideo() {
   });
 }
 
-/* ────────────────────────────────────────────────────────────
-   5. TESTIMONIALS
-──────────────────────────────────────────────────────────── */
-function initTestimonials() {
-  const container = document.getElementById('testimonials-container');
-  if (!container) return;
 
-  const testimonials = CONFIG.testimonials || [];
-  const avatars      = CONFIG.images.testimonialAvatars || [];
-
-  testimonials.forEach((t, i) => {
-    const card = document.createElement('div');
-    card.className = `testimonial-card ${t.theme || 'blue'}`;
-    card.setAttribute('role', 'listitem');
-
-    const avatarSrc = avatars[i] || `https://placehold.co/60x60/334155/ffffff?text=${encodeURIComponent((t.name || 'T').charAt(0))}`;
-
-    card.innerHTML = `
-      <div class="testimonial-quote-icon" aria-hidden="true">"</div>
-      <p class="testimonial-text">${escapeHTML(t.quote)}</p>
-      <div class="testimonial-footer">
-        <img class="testimonial-avatar"
-             src="${avatarSrc}"
-             alt="Photo of ${escapeHTML(t.name)}"
-             loading="lazy"
-             onerror="this.src='https://placehold.co/60x60/334155/ffffff?text=${encodeURIComponent((t.name||'T').charAt(0))}'" />
-        <div>
-          <div class="testimonial-name">${escapeHTML(t.name)}</div>
-          <div class="testimonial-role">${escapeHTML(t.role)}</div>
-        </div>
-      </div>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
-/* ────────────────────────────────────────────────────────────
-   6. TECHNICAL DOCUMENTS
-──────────────────────────────────────────────────────────── */
-function initDocuments() {
-  const grid = document.getElementById('docs-grid');
-  if (!grid) return;
-
-  const docs = CONFIG.documents || [];
-
-  docs.forEach((doc) => {
-    const card = document.createElement('article');
-    card.className = 'doc-card';
-    card.setAttribute('role', 'listitem');
-    
-    const subtitleHtml = doc.subtitle ? `<div class="doc-subtitle-pill">${escapeHTML(doc.subtitle)}</div>` : '';
-    const fileBadgeHtml = doc.fileType ? `<div class="doc-file-badge ${doc.fileType.toLowerCase()}">${doc.fileType.toUpperCase()}</div>` : '';
-
-    let buttonHtml = '';
-    const btnStyle = doc.buttonStyle || 'style-a';
-    if (btnStyle === 'style-a') {
-      buttonHtml = `<a href="${doc.fileUrl}" class="doc-btn btn-style-a" target="_blank" rel="noopener noreferrer">View Document <i data-lucide="arrow-right"></i></a>`;
-    } else if (btnStyle === 'style-b') {
-      buttonHtml = `<a href="${doc.fileUrl}" class="doc-btn btn-style-b" target="_blank" rel="noopener noreferrer">View Document</a>`;
-    } else if (btnStyle === 'style-c') {
-      buttonHtml = `<a href="${doc.fileUrl}" class="doc-btn btn-style-c" target="_blank" rel="noopener noreferrer">View Document <i data-lucide="download"></i></a>`;
-    } else if (btnStyle === 'style-d') {
-      buttonHtml = `<a href="${doc.fileUrl}" class="doc-btn btn-style-d" target="_blank" rel="noopener noreferrer">View Document <i data-lucide="external-link"></i></a>`;
-    }
-
-    card.innerHTML = `
-      ${fileBadgeHtml}
-      <div class="doc-icon-wrap" aria-hidden="true">
-        <i data-lucide="${escapeHTML(doc.icon)}"></i>
-      </div>
-      <div class="doc-content">
-        ${subtitleHtml}
-        <h3 class="doc-title">${escapeHTML(doc.title)}</h3>
-        <p class="doc-desc">${escapeHTML(doc.desc)}</p>
-      </div>
-      <div class="doc-footer">
-        ${buttonHtml}
-      </div>
-    `;
-
-    grid.appendChild(card);
-  });
-
-  // Ensure ScrollTrigger is registered
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Section Header Underline Animation
-    const underline = document.querySelector('#tech-docs .header-underline');
-    if (underline) {
-      gsap.fromTo(underline, 
-        { scaleX: 0 }, 
-        { 
-          scaleX: 1, 
-          duration: 1, 
-          ease: "power3.out", 
-          transformOrigin: "left center",
-          scrollTrigger: {
-            trigger: "#tech-docs",
-            start: "top 75%",
-          }
-        }
-      );
-    }
-
-    // Grid Cards Staggered Animation
-    const cards = document.querySelectorAll('.doc-card');
-    grid.classList.remove('fade-in'); // handled by GSAP now
-
-    ScrollTrigger.batch(cards, {
-      interval: 0.1,
-      batchMax: 7,
-      onEnter: (batch) => {
-        batch.forEach((card, i) => {
-          gsap.fromTo(card,
-            { opacity: 0, y: 30, scale: 0.95 },
-            { 
-              opacity: 1, y: 0, scale: 1, 
-              duration: 0.6, 
-              ease: "power3.out", 
-              delay: i * 0.1,
-              onComplete: () => {
-                gsap.set(card, { clearProps: "transform" });
-                card.classList.add('revealed');
-              }
-            }
-          );
-        });
-      },
-      start: "top 85%",
-    });
-  }
-}
 
 /* ────────────────────────────────────────────────────────────
    7. CTA BANNER
@@ -815,7 +678,6 @@ function initActiveNavTracking() {
   const sections = [
     { id: 'hero',             navId: 'nav-home'  },
     { id: 'field-validation', navId: 'nav-field' },
-    { id: 'tech-docs',        navId: 'nav-docs'  },
     { id: 'team',             navId: 'nav-team'  },
   ];
 

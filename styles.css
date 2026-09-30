@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   AgriSpike — Evidence & Documentation Hub
+   SkySync — From Block Forecasts to Panchayat Truth
    styles.css  ·  Complete stylesheet
    ═══════════════════════════════════════════════════════════════ */
 
@@ -662,7 +662,7 @@ button {
 ────────────────────────────────────────────────────────────── */
 .fv-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 28px;
   align-items: start;
 }
@@ -979,282 +979,6 @@ button {
 .video-close-btn:hover { background: rgba(255,255,255,0.22); }
 .video-close-btn svg { width: 18px; height: 18px; }
 
-/* Testimonials */
-.fv-testimonials {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.testimonial-card {
-  border-radius: var(--radius);
-  padding: 22px 20px 18px;
-  position: relative;
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-.testimonial-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-.testimonial-card.green {
-  background: var(--green-bg);
-  border: 1px solid var(--green-border);
-}
-.testimonial-card.blue {
-  background: var(--blue-card-bg);
-  border: 1px solid var(--blue-border);
-}
-.testimonial-quote-icon {
-  font-size: 2.2rem;
-  font-family: Georgia, serif;
-  font-weight: 900;
-  line-height: 1;
-  margin-bottom: 8px;
-}
-.testimonial-card.green .testimonial-quote-icon { color: #16a34a; }
-.testimonial-card.blue  .testimonial-quote-icon { color: var(--blue); }
-.testimonial-text {
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: var(--text-dark);
-  margin-bottom: 16px;
-  font-style: italic;
-}
-.testimonial-footer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.testimonial-avatar {
-  width: 40px; height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255,255,255,0.6);
-  flex-shrink: 0;
-}
-.testimonial-name {
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--text-dark);
-}
-.testimonial-role {
-  font-size: 0.75rem;
-  color: var(--text-mid);
-}
-
-/* ──────────────────────────────────────────────────────────────
-   9. TECHNICAL DOCUMENTATION
-────────────────────────────────────────────────────────────── */
-.header-underline {
-  height: 3px;
-  width: 100%;
-  background: var(--blue);
-  border-radius: 3px;
-  margin-top: 6px;
-}
-
-.docs-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 18px;
-}
-
-.doc-card {
-  width: calc(25% - 13.5px);
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 28px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(0,0,0,0.06);
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  cursor: default;
-  /* GSAP initial state */
-  opacity: 0;
-}
-
-.doc-card.revealed {
-  /* Empty state class for post-animation interaction */
-}
-
-.doc-card.revealed:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 0 0 2px rgba(59,130,246,0.4), 0 16px 40px rgba(59,130,246,0.15);
-  background-color: #F8FAFC;
-}
-
-.doc-file-badge {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  font-size: 0.65rem;
-  font-weight: 800;
-  padding: 4px 8px;
-  border-radius: 6px;
-  letter-spacing: 0.5px;
-}
-.doc-file-badge.pdf {
-  background: #FEE2E2;
-  color: #B91C1C;
-  border: 1px solid #FECACA;
-}
-.doc-file-badge.xlsx {
-  background: #DCFCE7;
-  color: #15803D;
-  border: 1px solid #BBF7D0;
-}
-
-.doc-icon-wrap {
-  width: 54px; height: 54px;
-  background: linear-gradient(135deg, var(--blue) 0%, #1d4ed8 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  margin-bottom: 4px;
-  transition: transform 0.3s ease;
-  animation: iconBreathe 2.5s ease-in-out infinite;
-}
-@keyframes iconBreathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.doc-card.revealed:hover .doc-icon-wrap {
-  animation: none;
-  transform: scale(1.15) rotate(-5deg);
-}
-
-.doc-icon-wrap svg { width: 24px; height: 24px; }
-
-.doc-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.doc-subtitle-pill {
-  display: inline-block;
-  background: var(--blue-card-bg);
-  color: var(--blue-dark);
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-bottom: 8px;
-  align-self: flex-start;
-  letter-spacing: 0.5px;
-}
-
-.doc-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  line-height: 1.35;
-  margin-bottom: 6px;
-}
-.doc-desc {
-  font-size: 0.8rem;
-  color: var(--text-mid);
-  line-height: 1.55;
-}
-
-.doc-footer {
-  margin-top: 14px;
-  display: flex;
-}
-
-/* Button Styles */
-.doc-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  width: fit-content;
-}
-.doc-btn svg { width: 15px; height: 15px; transition: transform 0.3s ease; }
-
-/* Style A */
-.btn-style-a {
-  background: var(--blue);
-  color: white;
-  border-radius: var(--radius-full);
-}
-.btn-style-a:hover {
-  background: var(--blue-dark);
-}
-.btn-style-a:hover svg {
-  transform: translateX(4px);
-}
-
-/* Style B */
-.btn-style-b {
-  background: transparent;
-  color: var(--blue);
-  border: 1.5px solid var(--blue);
-  border-radius: var(--radius-full);
-}
-.btn-style-b:hover {
-  background: var(--blue);
-  color: white;
-}
-
-/* Style C */
-.btn-style-c {
-  background: linear-gradient(45deg, var(--blue), #60A5FA, var(--blue));
-  background-size: 200% 200%;
-  color: white;
-  border-radius: var(--radius-full);
-  animation: gradientShift 3s ease infinite;
-}
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-.btn-style-c:hover svg {
-  animation: bounceSmall 0.4s ease;
-}
-@keyframes bounceSmall {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-
-/* Style D */
-.btn-style-d {
-  background: transparent;
-  color: var(--blue);
-  padding: 6px 0;
-  border-radius: 0;
-  position: relative;
-}
-.btn-style-d::after {
-  content: '';
-  position: absolute;
-  bottom: 2px; left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--blue);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease;
-}
-.btn-style-d:hover::after {
-  transform: scaleX(1);
-}
-.btn-style-d:hover svg {
-  transform: translateX(3px) translateY(-3px);
-}
 
 /* ──────────────────────────────────────────────────────────────
    10. CTA BANNER
@@ -2232,9 +1956,7 @@ button {
 @media (max-width: 1100px) {
   .doc-card { width: calc(33.333% - 12px); }
   .team-grid  { grid-template-columns: repeat(3, 1fr); }
-  .fv-grid    { grid-template-columns: 1fr 1fr; }
-  .fv-testimonials { grid-column: 1 / -1; flex-direction: row; }
-  .testimonial-card { flex: 1; }
+
   .cta-mockup { max-width: 340px; }
   /* Marquee: still 3 cards but smaller */
   .marquee-card { width: clamp(180px, 28vw, 360px); }
@@ -2242,7 +1964,7 @@ button {
 
 @media (max-width: 900px) {
   .fv-grid { grid-template-columns: 1fr; }
-  .fv-testimonials { flex-direction: column; }
+
   .hero-container { flex-direction: column; align-items: flex-start; gap: 40px; }
   .hero-badges { flex-direction: row; flex-wrap: wrap; }
   .feature-badge { min-width: 150px; flex: 1; }

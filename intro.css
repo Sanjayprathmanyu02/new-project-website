@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   AgriSpike — Loading Screen / Preloader
+   SkySync — Loading Screen / Preloader
    intro.css  ·  Complete redesign: progress bar + lightning flash
    ═══════════════════════════════════════════════════════════════ */
 
@@ -88,7 +88,7 @@ body.intro-active {
   height: 38px;
 }
 
-/* ── AGRISPIKE wordmark ── */
+/* ── SKYSYNC wordmark ── */
 .intro-wordmark {
   white-space: nowrap;
   line-height: 1;

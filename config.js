@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  AgriSpike — Evidence & Documentation Hub
+ *  SkySync — From Block Forecasts to Panchayat Truth
  *  CONFIG FILE  ·  config.js
  * ============================================================
  *  Edit ALL images, links, videos, and text content here.
@@ -15,11 +15,11 @@ const CONFIG = {
      BRAND
   ────────────────────────────────────────────────────────── */
   brand: {
-    name: 'AgriSpike',
-    tagline: 'Evidence & Documentation Hub',
+    name: 'SkySync',
+    tagline: 'From Block Forecasts to Panchayat Truth',
     team: 'SenseiSquad',
-    copyright: '© 2026 AgriSpike | SenseiSquad',
-    quote: 'Technology in the field. For a better tomorrow.',
+    copyright: '© 2026 SkySync | SenseiSquad',
+    quote: 'From block forecasts to panchayat truth.',
   },
 
   /* ──────────────────────────────────────────────────────────
@@ -32,7 +32,7 @@ const CONFIG = {
     hero: 'images/hero_bg.jpg',
 
     // Main logo used across the site
-    logo: 'images/logo.png',
+    logo: 'images/logo.png', // LOGO_PLACEHOLDER — new SkySync logo to be added
 
     /* ── HERO MARQUEE IMAGES ─────────────────────────────────────
        Top row scrolls LEFT→RIGHT, bottom row scrolls RIGHT→LEFT.
@@ -50,7 +50,7 @@ const CONFIG = {
       bottomRow: [
         'images/hero_bg.jpg',             // Sunset field + device
         'images/dashboard_mockup.png',    // Dashboard on laptop
-        'images/soil_closeup.jpg',        // Soil sensor close-up
+        'images/soil_closeup.jpg',        // Ground node close-up
         'images/solar_panel.jpg',         // Solar panel close-up
         'images/gallery_landscape.jpg',   // Second landscape shot
       ],
@@ -104,23 +104,15 @@ const CONFIG = {
       duration: '1:24',
     },
 
-    // Technical documentation — one URL per document card
-    documents: [
-      'docs/component-power-report.pdf',   // Card 1: Component & Power Report
-      'docs/bill-of-materials.pdf',        // Card 2: Bill of Materials
-      'docs/water-yield-estimator.pdf',    // Card 3: Water & Yield Impact Estimator
-      'docs/field-zoning-report.pdf',      // Card 4: Field Zoning Report
-      'docs/business-model-report.pdf',    // Card 5: Business Model Report
-    ],
 
-    // "Open AgriSpike Website" button in CTA banner
-    mainWebsite: 'https://agri-spike.vercel.app/#/login',   // Replace with your live URL
+    // "Open SkySync Website" button in CTA banner
+    mainWebsite: 'https://skysync-smart-agriculture.vercel.app/',
 
     // Nav links (smooth scroll targets)
     nav: {
       home: '#hero',
       fieldValidation: '#field-validation',
-      techDocs: '#tech-docs',
+
       team: '#team',
     },
 
@@ -138,86 +130,22 @@ const CONFIG = {
   ────────────────────────────────────────────────────────── */
   testimonials: [
     {
-      quote: 'The idea genuinely addresses a real problem we face — knowing our field\'s condition without physically checking it every day. If this works as shown, it could save a lot of time and water.',
-      name: 'R. Srinivasan',
-      role: 'Farmer, Appakudal',
+      quote: '[Placeholder — insert a real quote from a panchayat officer, farmer, or advisor who has seen the SkySync concept/demo, once available]',
+      name: '[Name Placeholder]',
+      role: '[Role Placeholder]',
       theme: 'green',   // 'green' | 'blue'
     },
     {
-      quote: 'The system shows great potential in real-time monitoring and smart irrigation. It is a valuable step towards precision agriculture in our region.',
-      name: 'Dr. M. Vasudevan',
-      role: 'Associate Professor, AG , BIT',
+      quote: '[Placeholder — insert a real quote from a panchayat officer, farmer, or advisor who has seen the SkySync concept/demo, once available]',
+      name: '[Name Placeholder]',
+      role: '[Role Placeholder]',
       theme: 'blue',
     },
     // Add more testimonials here — they appear automatically
   ],
 
   /* ──────────────────────────────────────────────────────────
-     TECHNICAL DOCUMENTS (grid cards)
-  ────────────────────────────────────────────────────────── */
-  documents: [
-    {
-      title: 'Component & Power Report',
-      subtitle: 'Sensing & Power System Justification Report',
-      desc: 'Sensor-by-sensor engineering rationale, LoRa+ESP32 architecture, and a calculated 57-day zero-solar battery autonomy with 5.8× solar surplus.',
-      fileUrl: 'docs/doc-01-sensing-power-justification.pdf',
-      fileType: 'pdf',
-      icon: 'battery-charging',
-      buttonStyle: 'style-a'
-    },
-    {
-      title: 'Bill of Materials',
-      subtitle: 'AgriSpike SIH BOM',
-      desc: 'Full 4-zone prototype costing — ₹5,381.64 in priced, required components — itemized by category with sourcing and quotation status.',
-      fileUrl: 'docs/doc-02-bill-of-materials.xlsx',
-      fileType: 'xlsx',
-      icon: 'list',
-      buttonStyle: 'style-b'
-    },
-    {
-      title: 'Water & Yield Impact Estimator',
-      desc: 'FAO-56/FAO-33 based model comparing zone-precision irrigation against uniform irrigation, with every input traceable — projected, pending full-season field validation.',
-      fileUrl: 'docs/doc-03-water-yield-impact-estimator.xlsx',
-      fileType: 'xlsx',
-      icon: 'droplets',
-      buttonStyle: 'style-c'
-    },
-    {
-      title: 'Farmer Interview Reports',
-      subtitle: 'Farmers_Report',
-      desc: 'First-hand accounts from three farmers on current irrigation practices, soil testing gaps, and willingness to adopt automated soil-sensing and fertigation.',
-      fileUrl: 'docs/doc-04-farmer-interview-reports.pdf',
-      fileType: 'pdf',
-      icon: 'users',
-      buttonStyle: 'style-d'
-    },
-    {
-      title: 'Patent & Prior-Art Research Report',
-      desc: 'An honest preliminary IP study — identifies existing prior art and defines exactly where AgriSpike\'s novelty claim is focused, rather than claiming blanket originality.',
-      fileUrl: 'docs/doc-05-patent-prior-art-research.pdf',
-      fileType: 'pdf',
-      icon: 'shield',
-      buttonStyle: 'style-a'
-    },
-    {
-      title: 'Individual Plant & Crop Requirements',
-      desc: 'A crop-by-crop knowledge base (Tomato, Chilli, Brinjal, Onion, Banana) mapping soil, nutrient, and environmental needs to AgriSpike\'s automated recommendation logic.',
-      fileUrl: 'docs/doc-06-plant-crop-requirements.pdf',
-      fileType: 'pdf',
-      icon: 'leaf',
-      buttonStyle: 'style-b'
-    },
-    {
-      title: 'LoRa Field Telemetry Report',
-      desc: 'A decoded, real sensor-packet readout from a deployed node — soil moisture, battery health, irrigation flags — showing the system\'s live data output, not just its design.',
-      fileUrl: 'docs/doc-07-lora-field-telemetry.pdf',
-      fileType: 'pdf',
-      icon: 'radio',
-      buttonStyle: 'style-c'
-    }
-  ],
 
-  /* ──────────────────────────────────────────────────────────
      TEAM MEMBERS
      Add or remove members freely — grid adapts automatically.
   ────────────────────────────────────────────────────────── */
@@ -263,11 +191,11 @@ const CONFIG = {
   /* ──────────────────────────────────────────────────────────
      FULL PHOTO GALLERY (30 Images for gallery.html)
   ────────────────────────────────────────────────────────── */
-  GALLERY_IMAGES: Array.from({ length: 30 }, (_, i) => {
+  GALLERY_IMAGES: Array.from({ length: 49 }, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
     return {
       src: `images/gallery/gallery-${num}.jpg`,
-      caption: `Field deployment photo ${i + 1} detailing system setup and crop health.`
+      caption: `Field deployment photo ${i + 1} detailing system setup and node deployment.`
     };
   }),
 
@@ -278,38 +206,26 @@ const CONFIG = {
     {
       src: 'videos/video-01.mp4',
       poster: 'images/video-thumbs/video-thumb-01.jpg',
-      title: 'Farmer Interview — Vaniputhur',
-      description: 'Everyday irrigation decisions, walked through with a local farmer'
+      title: 'Field Video 1',
+      description: 'Field deployment footage — description to be added'
     },
     {
       src: 'videos/video-02.mp4',
       poster: 'images/video-thumbs/video-thumb-02.jpg',
-      title: 'Farmer Interview — Vembathi Field Session',
-      description: 'Real-time soil and irrigation insights, reviewed on-site with the farmer'
+      title: 'Field Video 2',
+      description: 'Field deployment footage — description to be added'
     },
     {
       src: 'videos/video-03.mp4',
       poster: 'images/video-thumbs/video-thumb-03.jpg',
-      title: 'Farmer Interview — Vembathi',
-      description: 'Adoption experience, water savings, and yield impact — in the farmer\'s own words'
+      title: 'Field Video 3',
+      description: 'Field deployment footage — description to be added'
     },
     {
       src: 'videos/video-04.mp4',
       poster: 'images/video-thumbs/video-thumb-04.jpg',
-      title: 'AgriSpike Node — Field-Deployed',
-      description: 'The finished sensor spike, installed and running in real farm soil'
-    },
-    {
-      src: 'videos/video-05.mp4',
-      poster: 'images/video-thumbs/video-thumb-05.jpg',
-      title: 'Prototype Overview',
-      description: 'Full walkthrough of the hardware prototype: components, sensors, architecture'
-    },
-    {
-      src: 'videos/video-06.mp4',
-      poster: 'images/video-thumbs/video-thumb-06.jpg',
-      title: 'Live Hardware Check — In the Field',
-      description: 'Circuit and connectivity verified on-site, not just on the bench'
+      title: 'Field Video 4',
+      description: 'Field deployment footage — description to be added'
     }
   ],
 };

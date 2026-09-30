@@ -1,11 +1,11 @@
 /**
  * ============================================================
- * AgriSpike — Videos Page Logic
+ * SkySync — Videos Page Logic
  * ============================================================
  */
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof CONFIG === 'undefined' || !CONFIG.VIDEOS) {
-    console.error('[AgriSpike] VIDEOS not found in config.js');
+    console.error('[SkySync] VIDEOS not found in config.js');
     return;
   }
 

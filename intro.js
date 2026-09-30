@@ -1,6 +1,6 @@
 /**
  * ════════════════════════════════════════════════════════════════
- *  AgriSpike — Loading Screen  ·  intro.js  (v2 — Progress + Flash)
+ *  SkySync — Loading Screen  ·  intro.js  (v2 — Progress + Flash)
  *  Requires: GSAP 3 (loaded synchronously BEFORE this script)
  *  Requires: CONFIG object (config.js loaded before this script)
  * ════════════════════════════════════════════════════════════════
@@ -55,7 +55,7 @@
       CONFIG?.images?.videoThumbnail,
       CONFIG?.images?.dashboardMockup,
       CONFIG?.images?.marquee?.topRow?.[4],     // aerial_farm
-      CONFIG?.images?.marquee?.bottomRow?.[2],  // soil_closeup
+      CONFIG?.images?.marquee?.bottomRow?.[2],  // node_closeup
       CONFIG?.images?.marquee?.bottomRow?.[3],  // solar_panel
     ].filter(Boolean);
 

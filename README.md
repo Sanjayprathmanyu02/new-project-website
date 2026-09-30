@@ -1,4 +1,4 @@
-# AgriSpike — Evidence & Documentation Hub
+# SkySync — From Block Forecasts to Panchayat Truth
 **Built by SenseiSquad · SIH 2026**
 
 ---
@@ -81,7 +81,7 @@ links: {
 
 ```js
 links: {
-  mainWebsite: 'https://your-agrispike-url.com',
+  mainWebsite: 'https://your-skysync-url.com',
 }
 ```
 
@@ -168,4 +168,4 @@ All placeholder images use `https://placehold.co`. Replace them with real photos
 
 ---
 
-*© 2026 AgriSpike | SenseiSquad*
+*© 2026 SkySync | SenseiSquad*
