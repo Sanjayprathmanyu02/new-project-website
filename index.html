@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AgriSpike Evidence & Documentation Hub — AI-Powered Personal Farming Assistant for Healthier Crops, Higher Yield and a Sustainable Tomorrow. Built by SenseiSquad." />
+  <meta name="keywords" content="AgriSpike, smart farming, IoT agriculture, SenseiSquad, SIH 2026, precision agriculture" />
+  <meta name="author" content="SenseiSquad" />
+  <meta property="og:title" content="AgriSpike — Evidence & Documentation Hub" />
+  <meta property="og:description" content="AI-Powered Personal Farming Assistant for Healthier Crops, Higher Yield and a Sustainable Tomorrow." />
+  <title>AgriSpike — Evidence &amp; Documentation Hub | SenseiSquad</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!--
+    intro.css loads FIRST — the overlay div below renders with navy background
+    instantly before any JS runs, giving a true "no flash of white page" experience.
+  -->
+  <link rel="stylesheet" href="intro.css" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="intro-active">
+
+  <!-- ════════════════════════════════════════════════════════════
+       LOADING SCREEN OVERLAY
+       Static HTML renders IMMEDIATELY (before any JS).
+       GSAP + intro.js animate it from the bottom of <body>.
+  ══════════════════════════════════════════════════════════════ -->
+  <div id="intro-overlay" role="status" aria-label="Loading AgriSpike…">
+
+    <!-- 1. Background: dimmed image slideshow (populated by intro.js) -->
+    <div class="intro-slideshow-wrap" aria-hidden="true">
+      <div class="intro-slideshow" id="intro-slideshow"></div>
+      <div class="intro-dim"></div>
+    </div>
+
+    <!-- 2. Foreground: logo, wordmark, progress bar -->
+    <div class="intro-fg">
+
+      <!-- Leaf logo -->
+      <div class="intro-leaf-wrap" id="intro-leaf" aria-hidden="true">
+        <img class="logo-image" alt="AgriSpike Logo" />
+        <div class="logo-signal-pulse"></div>
+      </div>
+
+      <!-- AGRISPIKE wordmark (AGRI white, SPIKE blue — one line) -->
+      <div class="intro-wordmark" aria-label="AgriSpike">
+        <span class="intro-agri">AGRI</span><span class="intro-spike">SPIKE</span>
+      </div>
+
+      <!-- Subtitle -->
+      <div class="intro-tagline-sub">Evidence &amp; Documentation Hub</div>
+
+      <!-- Progress bar + percentage counter -->
+      <div class="intro-bar-section">
+        <div class="intro-bar-track">
+          <div class="intro-bar-fill" id="intro-bar-fill">
+            <div class="intro-shimmer"></div>
+          </div>
+        </div>
+        <div class="intro-percent" id="intro-percent" aria-live="polite">0%</div>
+      </div>
+
+    </div>
+
+    <!-- 3. Flash panels: four warm-white panels that close in from all sides -->
+    <div class="intro-flash-panels" id="intro-flash-panels" aria-hidden="true">
+      <div class="intro-flash-top"    id="intro-flash-top"></div>
+      <div class="intro-flash-bottom" id="intro-flash-bottom"></div>
+      <div class="intro-flash-left"   id="intro-flash-left"></div>
+      <div class="intro-flash-right"  id="intro-flash-right"></div>
+    </div>
+
+    <!-- 5. Skip button (bottom-right corner) -->
+    <button id="intro-skip-btn" type="button" aria-label="Skip loading animation">
+      Skip Intro ›
+    </button>
+
+  </div><!-- /intro-overlay -->
+
+
+  <!-- ════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════ -->
+  <header id="navbar" class="navbar" role="banner">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="AgriSpike Home">
+        <div class="logo-icon" aria-hidden="true">
+          <img class="logo-image" alt="AgriSpike Logo" />
+          <div class="logo-signal-pulse"></div>
+        </div>
+        <div class="logo-text">
+          <span class="logo-wordmark" aria-label="AgriSpike">
+            <span class="logo-agri">AGRI</span><span class="logo-spike">SPIKE</span>
+          </span>
+          <span class="logo-tagline">Evidence &amp; Documentation Hub</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#hero"             class="nav-link active" id="nav-home">Home</a>
+        <a href="#field-validation" class="nav-link"        id="nav-field">Field Validation</a>
+        <a href="#tech-docs"        class="nav-link"        id="nav-docs">Technical Documentation</a>
+        <a href="#team"             class="nav-link"        id="nav-team">Team</a>
+      </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+      <a href="#hero"             class="mobile-link" id="mnav-home">Home</a>
+      <a href="#field-validation" class="mobile-link" id="mnav-field">Field Validation</a>
+      <a href="#tech-docs"        class="mobile-link" id="mnav-docs">Technical Documentation</a>
+      <a href="#team"             class="mobile-link" id="mnav-team">Team</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ════════════════════════════════════════════════
+         HERO  (CSS marquee background)
+    ════════════════════════════════════════════════ -->
+    <section id="hero" class="hero" aria-label="Hero section">
+
+      <!-- Marquee background — two scrolling image rows -->
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="marquee-row marquee-row-top">
+          <div class="marquee-track marquee-track-ltr" id="marquee-top-track"></div>
+        </div>
+        <div class="marquee-row marquee-row-bot">
+          <div class="marquee-track marquee-track-rtl" id="marquee-bot-track"></div>
+        </div>
+      </div>
+
+      <!-- Hero vignette (subtle corner darkening) -->
+      <div class="hero-vignette" aria-hidden="true"></div>
+
+      <!-- Dark gradient overlay -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="hero-container">
+
+        <!-- Left: text content -->
+        <div class="hero-content fade-in">
+          <div class="hero-logo-block">
+            <div class="hero-leaf-icon" aria-hidden="true">
+              <img class="logo-image" alt="AgriSpike Logo" />
+              <div class="logo-signal-pulse"></div>
+            </div>
+            <div>
+              <h1 class="hero-brand" aria-label="AgriSpike">
+                <span class="hero-agri">AGRI</span><span class="hero-spike">SPIKE</span>
+              </h1>
+              <p class="hero-tagline-text">Evidence &amp; Documentation Hub</p>
+            </div>
+          </div>
+
+          <div class="process-flow" aria-label="Process: Sense, Understand, Decide, Act">
+            <span class="flow-step">Sense</span>
+            <span class="flow-arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></span>
+            <span class="flow-step">Understand</span>
+            <span class="flow-arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></span>
+            <span class="flow-step">Decide</span>
+            <span class="flow-arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></span>
+            <span class="flow-step">Act</span>
+          </div>
+
+          <p class="hero-subheading">
+            AI-Powered Personal Farming Assistant for Healthier Crops,<br />
+            Higher Yield and a Sustainable Tomorrow.
+          </p>
+
+          <div class="sensei-brand">
+            <div class="sensei-s-icon" aria-hidden="true">S</div>
+            <span class="sensei-name">SENSEISQUAD</span>
+            <span class="sensei-divider" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- Right: feature badges -->
+        <aside class="hero-badges" aria-label="Key features">
+          <div class="feature-badge">
+            <div class="badge-icon" aria-hidden="true"><i data-lucide="layers"></i></div>
+            <span>Soil Health</span>
+          </div>
+          <div class="feature-badge">
+            <div class="badge-icon" aria-hidden="true"><i data-lucide="cloud"></i></div>
+            <span>Weather</span>
+          </div>
+          <div class="feature-badge">
+            <div class="badge-icon" aria-hidden="true"><i data-lucide="droplets"></i></div>
+            <span>Fertigation</span>
+          </div>
+          <div class="feature-badge">
+            <div class="badge-icon" aria-hidden="true"><i data-lucide="leaf"></i></div>
+            <span>Crop Health</span>
+          </div>
+          <div class="feature-badge">
+            <div class="badge-icon" aria-hidden="true"><i data-lucide="trending-up"></i></div>
+            <span>Higher Yield</span>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- Mobile Scroll Hint (only visible on mobile) -->
+      <div class="mobile-hero-scroll-hint" aria-hidden="true">
+        <i data-lucide="chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         FIELD VALIDATION
+    ════════════════════════════════════════════════ -->
+    <section id="field-validation" class="section section-light" aria-label="Field Validation">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-icon-wrap" aria-hidden="true"><i data-lucide="map-pin"></i></div>
+          <div>
+            <h2 class="section-title"><span class="title-dark">FIELD </span><span class="title-blue">VALIDATION</span></h2>
+            <p class="section-subtitle">Real conditions. Real farmers. Real impact.</p>
+          </div>
+        </div>
+        <div class="fv-grid">
+          <div class="fv-gallery fade-in">
+            <div class="gallery-grid" id="gallery-grid" role="list" aria-label="Field photo gallery"></div>
+            <div class="gallery-caption">
+              <span class="gallery-caption-left"><i data-lucide="camera" aria-hidden="true"></i> Photo Gallery</span>
+              <a href="#" id="view-all-photos-link" class="gallery-view-all">
+                View All Photos <i data-lucide="arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="fv-video fade-in">
+            <div class="video-card-wrap">
+              <div class="video-stack-bg video-stack-2"></div>
+              <div class="video-stack-bg video-stack-1"></div>
+              <div class="video-badge" id="video-count-badge" aria-hidden="true"><i data-lucide="play-circle"></i> <span>1 of 6 Videos</span></div>
+              <div class="video-card" id="video-card" role="region" aria-label="Field validation video">
+                <div class="video-thumb-wrap">
+                  <img id="video-thumbnail-img" src="" alt="Field validation video thumbnail" class="video-thumb" loading="lazy" />
+                  <button class="play-btn" id="play-btn" aria-label="Play field video"><i data-lucide="play" aria-hidden="true"></i></button>
+                </div>
+                <div class="video-controls">
+                  <button class="vc-btn" aria-label="Play"><i data-lucide="play" aria-hidden="true"></i></button>
+                  <div class="vc-progress">
+                    <div class="vc-bar"><div class="vc-fill" style="width:0%"></div></div>
+                    <span class="vc-time" id="video-duration-display">0:00 / 1:24</span>
+                  </div>
+                  <button class="vc-btn" aria-label="Volume"><i data-lucide="volume-2" aria-hidden="true"></i></button>
+                  <button class="vc-btn" aria-label="Fullscreen"><i data-lucide="maximize" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="video-label">
+              <span><i data-lucide="video" aria-hidden="true"></i> Field Video</span>
+              <a href="videos.html" id="watch-video-link" class="watch-link">Watch All Videos <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="fv-testimonials fade-in" id="testimonials-container" aria-label="Testimonials"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         TECHNICAL DOCUMENTATION
+    ════════════════════════════════════════════════ -->
+    <section id="tech-docs" class="section section-gray" aria-label="Technical Documentation">
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-icon-wrap" aria-hidden="true"><i data-lucide="file-text"></i></div>
+          <div>
+            <h2 class="section-title"><span class="title-dark">TECHNICAL </span><span class="title-blue">DOCUMENTATION</span></h2>
+            <div class="docs-header-content" style="position: relative; display: inline-block;">
+              <p class="section-subtitle" style="margin-bottom: 0;">Detailed reports, data and analysis of our solution.</p>
+              <div class="header-underline"></div>
+            </div>
+          </div>
+        </div>
+        <div class="docs-grid fade-in" id="docs-grid" role="list" aria-label="Technical documents"></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         CTA BANNER
+    ════════════════════════════════════════════════ -->
+    <section id="cta-banner" class="section cta-section" aria-label="Visit AgriSpike website">
+      <!-- Animated Border Top -->
+      <div class="cta-border-top"></div>
+      
+      <!-- Background Elements -->
+      <div class="cta-bg-elements" aria-hidden="true">
+        <div class="cta-mesh cta-mesh-1"></div>
+        <div class="cta-mesh cta-mesh-2"></div>
+        <div class="cta-mesh cta-mesh-3"></div>
+        <div class="cta-grid-overlay"></div>
+        <div class="cta-particles">
+          <div class="cta-particle p1"></div>
+          <div class="cta-particle p2"></div>
+          <div class="cta-particle p3"></div>
+          <div class="cta-particle p4"></div>
+          <div class="cta-particle p5"></div>
+          <div class="cta-particle p6"></div>
+          <div class="cta-particle p7"></div>
+        </div>
+      </div>
+
+      <div class="container cta-container relative-z">
+        <div class="cta-content" id="cta-content">
+          <div class="cta-icon-wrap cta-reveal" aria-hidden="true"><i data-lucide="globe"></i></div>
+          <div>
+            <h2 class="cta-title" id="cta-title">
+              <span class="cta-word">VISIT</span> <span class="cta-word">OUR</span> <span class="cta-word cta-blue-glow">WEBSITE</span>
+            </h2>
+            <p class="cta-subtitle cta-reveal">Explore the full project, live dashboard and more.</p>
+            
+            <div class="cta-btn-wrapper cta-reveal" id="cta-btn-wrapper">
+              <div class="cta-live-indicator">
+                <span class="live-dot"></span>
+                <span class="live-text">Live Dashboard</span>
+              </div>
+              <div class="cta-btn-glow"></div>
+              <a href="#" id="main-website-link" class="cta-btn-premium" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="external-link" aria-hidden="true"></i>
+                <span>Open AgriSpike Website</span>
+                <i data-lucide="arrow-right" class="arrow-icon" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="cta-mockup-wrapper" id="cta-mockup-wrapper">
+          <div class="cta-mockup-light"></div>
+          <div class="cta-mockup-floater">
+            <img id="dashboard-mockup-img" src="" alt="AgriSpike dashboard on laptop and smartphone" loading="lazy" />
+            <div class="cta-screen-shimmer"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Animated Border Bottom -->
+      <div class="cta-border-bottom"></div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════
+         TEAM
+    ════════════════════════════════════════════════ -->
+    <section id="team" class="section section-light team-section" aria-label="Team SenseiSquad">
+      <div class="team-accents">
+        <div class="team-dot team-dot-1"></div>
+        <div class="team-dot team-dot-2"></div>
+        <div class="team-dot team-dot-3"></div>
+      </div>
+      <div class="container">
+        <div class="section-header fade-in">
+          <div class="section-icon-wrap" aria-hidden="true"><i data-lucide="users"></i></div>
+          <div>
+            <h2 class="section-title"><span class="title-dark">AGRISPIKE </span><span class="title-blue">TEAM</span></h2>
+            <div class="team-header-content" style="position: relative; display: inline-block;">
+              <p class="section-subtitle" style="margin-bottom: 0;">Meet the team behind AgriSpike · Team SenseiSquad</p>
+              <div class="header-underline"></div>
+            </div>
+          </div>
+        </div>
+        <div class="team-grid fade-in" id="team-grid" role="list" aria-label="Team members"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <!-- Animated Top Border -->
+    <div class="footer-border-top"></div>
+    
+    <!-- Background Effects -->
+    <div class="footer-bg-elements" aria-hidden="true">
+      <div class="footer-grid-overlay"></div>
+      <div class="footer-particles">
+        <div class="f-particle fp1"></div>
+        <div class="f-particle fp2"></div>
+        <div class="f-particle fp3"></div>
+        <div class="f-particle fp4"></div>
+      </div>
+    </div>
+
+    <div class="container footer-container relative-z">
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand -->
+        <div class="footer-col footer-col-brand footer-reveal">
+          <a href="#hero" class="footer-logo">
+            <div class="footer-leaf" aria-hidden="true">
+              <img class="logo-image" alt="AgriSpike Logo" />
+              <div class="logo-signal-pulse"></div>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-wordmark"><span class="footer-agri">AGRI</span><span class="footer-spike">SPIKE</span></span>
+              <span class="footer-tagline-sm">Evidence &amp; Documentation Hub</span>
+            </div>
+          </a>
+          <p class="footer-mission">Sensing, understanding, and acting — for smarter, sustainable farming.</p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col footer-col-links footer-reveal">
+          <h4 class="footer-heading">Quick Links</h4>
+          <nav class="footer-nav">
+            <a href="index.html#hero">Home</a>
+            <a href="index.html#field-validation">Field Validation</a>
+            <a href="index.html#tech-docs">Technical Documentation</a>
+            <a href="index.html#team">Team</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="videos.html">Videos</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: SenseiSquad / Social -->
+        <div class="footer-col footer-col-social footer-reveal">
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-sensei">
+            <div class="footer-s-icon" aria-hidden="true">S</div>
+            <span class="footer-sensei-name">SenseiSquad</span>
+          </div>
+          <p class="footer-built-by">Built for Smart India Hackathon 2026</p>
+          <div class="footer-social-links" id="footer-social-links">
+            <div class="social-icon-wrapper">
+              <span class="social-tooltip">Email</span>
+              <a href="mailto:sanjayprathmanyu@gmail.com" id="social-email" class="social-circle" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+            </div>
+            <div class="social-icon-wrapper">
+              <span class="social-tooltip">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/s-sanjay-prathmanyu/" id="social-linkedin" class="social-circle" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+            </div>
+            <div class="social-icon-wrapper">
+              <span class="social-tooltip">GitHub</span>
+              <a href="https://github.com/Sanjayprathmanyu02" id="social-github" class="social-circle" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4: Quote -->
+        <div class="footer-col footer-col-quote footer-reveal">
+          <div class="footer-quote-icon" aria-hidden="true"><i data-lucide="quote"></i></div>
+          <p class="footer-quote-text" id="footer-quote-text"><em>"Technology in the field. For a better tomorrow."</em></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom relative-z">
+      <div class="container footer-bottom-inner">
+        <p class="footer-copyright-text" id="footer-copyright-text">© 2026 AgriSpike | SenseiSquad</p>
+        <button id="footer-btt-link" class="footer-btt-link" aria-label="Back to Top">
+          Back to Top <i data-lucide="chevron-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════
+       NATIVE VIDEO MODAL
+  ════════════════════════════════════════════════ -->
+  <div id="video-modal" class="video-modal" aria-hidden="true" role="dialog">
+    <div class="video-modal-overlay" id="video-modal-overlay"></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close" id="video-modal-close" aria-label="Close video"><i data-lucide="x"></i></button>
+      <div class="video-player-wrap">
+        <video id="native-video-player" controls preload="none">
+          Your browser does not support HTML5 video.
+        </video>
+        <div id="video-loader" class="video-loader"><i data-lucide="loader"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+       SCRIPTS
+       Load order: config → lucide already in head →
+       script.js → GSAP (sync) → intro.js
+       GSAP loads synchronously here so intro.js is
+       guaranteed to find `gsap` defined immediately.
+  ════════════════════════════════════════════════ -->
+
+  <!-- Floating Back to Top Button -->
+  <button id="floating-btt" class="floating-btt" aria-label="Back to top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <!-- GSAP loaded synchronously (after DOM, before intro.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="intro.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AgriSpike Photo Gallery - Evidence & Documentation Hub" />
+  <title>Photo Gallery | AgriSpike</title>
+  <link rel="icon" type="image/png" href="images/logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="gallery.css" />
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════ -->
+  <header id="navbar" class="navbar" role="banner">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo" aria-label="AgriSpike Home">
+        <div class="logo-icon" aria-hidden="true">
+          <img class="logo-image" alt="AgriSpike Logo" />
+          <div class="logo-signal-pulse"></div>
+        </div>
+        <div class="logo-text">
+          <span class="logo-wordmark" aria-label="AgriSpike">
+            <span class="logo-agri">AGRI</span><span class="logo-spike">SPIKE</span>
+          </span>
+          <span class="logo-tagline">Evidence &amp; Documentation Hub</span>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html#hero"             class="nav-link" id="nav-home">Home</a>
+        <a href="index.html#field-validation" class="nav-link" id="nav-field">Field Validation</a>
+        <a href="index.html#tech-docs"        class="nav-link" id="nav-docs">Technical Documentation</a>
+        <a href="index.html#team"             class="nav-link" id="nav-team">Team</a>
+      </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
+      <a href="index.html#hero"             class="mobile-link" id="mnav-home">Home</a>
+      <a href="index.html#field-validation" class="mobile-link" id="mnav-field">Field Validation</a>
+      <a href="index.html#tech-docs"        class="mobile-link" id="mnav-docs">Technical Documentation</a>
+      <a href="index.html#team"             class="mobile-link" id="mnav-team">Team</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-light" aria-label="Photo Gallery">
+      <div class="container">
+        
+        <!-- Back button -->
+        <a href="index.html" class="back-link">
+          <i data-lucide="arrow-left" aria-hidden="true"></i> Back to Home
+        </a>
+
+        <!-- Header -->
+        <div class="section-header" style="margin-top: 24px; margin-bottom: 40px;">
+          <div class="section-icon-wrap" aria-hidden="true"><i data-lucide="camera"></i></div>
+          <div>
+            <h1 class="section-title"><span class="title-dark">PHOTO </span><span class="title-blue">GALLERY</span></h1>
+            <p class="section-subtitle" style="margin-bottom: 12px;">A complete visual record of our field work and deployment.</p>
+            <div id="gallery-counter" class="gallery-counter">
+              <i data-lucide="camera" class="gallery-counter-icon"></i>
+              <span id="gallery-counter-text">Loading photos...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Gallery Grid -->
+        <div class="full-gallery-grid" id="full-gallery-grid" role="list" aria-label="Full Photo Gallery">
+          <!-- Images injected by gallery.js -->
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════════════════════════
+       LIGHTBOX OVERLAY
+  ════════════════════════════════════════════════ -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox"><i data-lucide="x"></i></button>
+      <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image"><i data-lucide="chevron-left"></i></button>
+      <img id="lightbox-img" src="" alt="" />
+      <button class="lightbox-next" id="lightbox-next" aria-label="Next image"><i data-lucide="chevron-right"></i></button>
+      <div class="lightbox-caption-wrap">
+        <div class="lightbox-counter" id="lightbox-counter">1 / 30</div>
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <!-- Animated Top Border -->
+    <div class="footer-border-top"></div>
+    
+    <!-- Background Effects -->
+    <div class="footer-bg-elements" aria-hidden="true">
+      <div class="footer-grid-overlay"></div>
+      <div class="footer-particles">
+        <div class="f-particle fp1"></div>
+        <div class="f-particle fp2"></div>
+        <div class="f-particle fp3"></div>
+        <div class="f-particle fp4"></div>
+      </div>
+    </div>
+
+    <div class="container footer-container relative-z">
+      <div class="footer-grid">
+        
+        <!-- Column 1: Brand -->
+        <div class="footer-col footer-col-brand footer-reveal">
+          <a href="#hero" class="footer-logo">
+            <div class="footer-leaf" aria-hidden="true">
+              <img class="logo-image" alt="AgriSpike Logo" />
+              <div class="logo-signal-pulse"></div>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-wordmark"><span class="footer-agri">AGRI</span><span class="footer-spike">SPIKE</span></span>
+              <span class="footer-tagline-sm">Evidence &amp; Documentation Hub</span>
+            </div>
+          </a>
+          <p class="footer-mission">Sensing, understanding, and acting — for smarter, sustainable farming.</p>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-col footer-col-links footer-reveal">
+          <h4 class="footer-heading">Quick Links</h4>
+          <nav class="footer-nav">
+            <a href="index.html#hero">Home</a>
+            <a href="index.html#field-validation">Field Validation</a>
+            <a href="index.html#tech-docs">Technical Documentation</a>
+            <a href="index.html#team">Team</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="videos.html">Videos</a>
+          </nav>
+        </div>
+
+        <!-- Column 3: SenseiSquad / Social -->
+        <div class="footer-col footer-col-social footer-reveal">
+          <h4 class="footer-heading">Connect</h4>
+          <div class="footer-sensei">
+            <div class="footer-s-icon" aria-hidden="true">S</div>
+            <span class="footer-sensei-name">SenseiSquad</span>
+          </div>
+          <p class="footer-built-by">Built for Smart India Hackathon 2026</p>
+          <div class="footer-social-links" id="footer-social-links">
+            <div class="social-icon-wrapper">
+              <span class="social-tooltip">Email</span>
+              <a href="mailto:sanjayprathmanyu@gmail.com" id="social-email" class="social-circle" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </a>
+            </div>
+            <div class="social-icon-wrapper">
+              <span class="social-tooltip">LinkedIn</span>
+              <a href="https://www.linkedin.com/in/s-sanjay-prathmanyu/" id="social-linkedin" class="social-circle" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+            </div>
+            <div class="social-icon-wrapper">
+              <span class="social-tooltip">GitHub</span>
+              <a href="https://github.com/Sanjayprathmanyu02" id="social-github" class="social-circle" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 4: Quote -->
+        <div class="footer-col footer-col-quote footer-reveal">
+          <div class="footer-quote-icon" aria-hidden="true"><i data-lucide="quote"></i></div>
+          <p class="footer-quote-text" id="footer-quote-text"><em>"Technology in the field. For a better tomorrow."</em></p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom relative-z">
+      <div class="container footer-bottom-inner">
+        <p class="footer-copyright-text" id="footer-copyright-text">© 2026 AgriSpike | SenseiSquad</p>
+        <button id="footer-btt-link" class="footer-btt-link" aria-label="Back to Top">
+          Back to Top <i data-lucide="chevron-up"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <!-- Floating Back to Top Button -->
+  <button id="floating-btt" class="floating-btt" aria-label="Back to top">
+    <i data-lucide="arrow-up"></i>
+  </button>
+
+  <script src="config.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+  <script src="gallery.js"></script>
+</body>
+</html>

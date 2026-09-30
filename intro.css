@@ -1,0 +1,269 @@
+/* ═══════════════════════════════════════════════════════════════
+   AgriSpike — Loading Screen / Preloader
+   intro.css  ·  Complete redesign: progress bar + lightning flash
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Overlay (shows INSTANTLY — renders before JS executes) ── */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #0B1A2E;   /* fallback while slideshow loads */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body.intro-active {
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────
+   BACKGROUND SLIDESHOW
+────────────────────────────────────────────────────────────── */
+.intro-slideshow-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.intro-slideshow {
+  position: absolute;
+  inset: 0;
+}
+
+/* Each slide is absolutely positioned, stacked on top of each other */
+.intro-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  will-change: opacity, transform;
+  transform-origin: center center;
+  transform: scale(1);
+}
+
+/* Dark overlay dims the slideshow so it never competes with the UI */
+.intro-dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 26, 46, 0.72);  /* 72% dark navy over images */
+  z-index: 1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   FOREGROUND — Logo, wordmark, progress bar
+────────────────────────────────────────────────────────────── */
+.intro-fg {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: 0 24px;
+  user-select: none;
+}
+
+/* ── Leaf logo icon ── */
+.intro-leaf-wrap {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #3B82F6 0%, #1d4ed8 100%);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  will-change: transform, box-shadow;
+  margin-bottom: 4px;
+}
+.intro-leaf-wrap svg {
+  width: 38px;
+  height: 38px;
+}
+
+/* ── AGRISPIKE wordmark ── */
+.intro-wordmark {
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: 3px;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.8rem, 10vw, 6.5rem);
+}
+.intro-agri  { color: #ffffff; }
+.intro-spike { color: #3B82F6; }
+
+/* ── Small tagline under wordmark ── */
+.intro-tagline-sub {
+  color: rgba(255, 255, 255, 0.50);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  letter-spacing: 1.5px;
+  margin-top: -4px;
+  margin-bottom: 6px;
+}
+
+/* ────────────────────────────────────────────────────────────
+   PROGRESS BAR
+────────────────────────────────────────────────────────────── */
+.intro-bar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.intro-bar-track {
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.intro-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #3B82F6 0%, #60A5FA 100%);
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;                     /* clips the shimmer */
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  will-change: width;
+}
+
+/* Shimmer: sliding light streak over the fill */
+.intro-shimmer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  animation: intro-shimmer-slide 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes intro-shimmer-slide {
+  0%   { left: -80px; }
+  100% { left: calc(100% + 80px); }
+}
+
+/* Percentage counter */
+.intro-percent {
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   ALL-SIDES FLASH PANELS
+   Phase 1: 4 panels (top, bottom, left, right) scale from their 
+            respective outer edges to 1, sealing the viewport white.
+   Phase 3: GSAP scales them back to 0, clearing the center first.
+──────────────────────────────────────────────────────────────── */
+.intro-flash-panels {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;     /* clip panels cleanly at viewport edges */
+}
+
+/* Top panel: starts collapsed at top edge, expands downward */
+.intro-flash-top {
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 51%;
+  background: #FFFBF5;
+  transform: scaleY(0);
+  transform-origin: top center;
+  will-change: transform;
+}
+
+/* Bottom panel: starts collapsed at bottom edge, expands upward */
+.intro-flash-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 51%;
+  background: #FFFBF5;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  will-change: transform;
+}
+
+/* Left panel: starts collapsed at left edge, expands rightward */
+.intro-flash-left {
+  position: absolute;
+  top: 0; left: 0; bottom: 0; width: 51%;
+  background: #FFFBF5;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* Right panel: starts collapsed at right edge, expands leftward */
+.intro-flash-right {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; width: 51%;
+  background: #FFFBF5;
+  transform: scaleX(0);
+  transform-origin: right center;
+  will-change: transform;
+}
+
+/* ────────────────────────────────────────────────────────────
+   SKIP BUTTON
+────────────────────────────────────────────────────────────── */
+#intro-skip-btn {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.55);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+#intro-skip-btn:hover {
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #fff;
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .intro-leaf-wrap { width: 56px; height: 56px; border-radius: 14px; }
+  .intro-leaf-wrap svg { width: 28px; height: 28px; }
+  .intro-wordmark { font-size: clamp(2.4rem, 11vw, 6.5rem); letter-spacing: 2px; }
+  .intro-bar-section { max-width: 80%; }
+  #intro-skip-btn { bottom: 20px; right: 50%; transform: translateX(50%); font-size: 0.75rem; padding: 8px 20px; }
+}
