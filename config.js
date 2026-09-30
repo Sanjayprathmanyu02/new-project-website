@@ -49,7 +49,7 @@ const CONFIG = {
       ],
       bottomRow: [
         'images/hero_bg.jpg',             // Sunset field + device
-        'images/dashboard_mockup.png',    // Dashboard on laptop
+        'images/dashboard_mockup.jpg',    // Dashboard on laptop
         'images/soil_closeup.jpg',        // Ground node close-up
         'images/solar_panel.jpg',         // Solar panel close-up
         'images/gallery_landscape.jpg',   // Second landscape shot
@@ -76,7 +76,7 @@ const CONFIG = {
     ],
 
     // CTA banner — laptop+phone mockup
-    dashboardMockup: 'images/dashboard_mockup.png',
+    dashboardMockup: 'images/dashboard_mockup.jpg',
 
     // Team member avatars (index matches TEAM array below)
     teamAvatars: [
