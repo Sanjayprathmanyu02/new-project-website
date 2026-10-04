@@ -205,7 +205,7 @@ const CONFIG = {
   VIDEOS: [
     {
       src: 'videos/video-01.mp4',
-      poster: 'images/video-thumbs/video-thumb-01.jpg',
+      poster: 'images/video-thumbs/video-thumb-01.png',
       title: 'Field Video 1',
       description: 'Field deployment footage — description to be added'
     },
